@@ -21,6 +21,7 @@ For the week timeframe in which I will currently be working, I have decided to r
 ###############
 
 APIs/Widgets:
+
 	Stats FC API:
 		This API will allow me to pull statistics and results for each team and also pull general information like top scorers in the league. 
 
@@ -36,6 +37,7 @@ APIs/Widgets:
 
 
 Gems:
+
 	Rails 3.2.13:
 		This is the version of Rails I'll be using.
 
