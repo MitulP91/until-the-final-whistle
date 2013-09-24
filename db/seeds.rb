@@ -1,6 +1,6 @@
 # Include necessary gems
 require 'httparty'
-require 'Nokogiri'
+require 'nokogiri'
 require 'open-uri'
 include Nokogiri
 
