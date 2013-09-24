@@ -1,8 +1,7 @@
-# Include HTTParty for access to API
-require 'HTTParty'
+# Include necessary gems
+require 'httparty'
 require 'Nokogiri'
 require 'open-uri'
-include HTTParty
 include Nokogiri
 
 # Create default league 
@@ -12,8 +11,6 @@ League.create(name: "Barclays Premier League", country: "England")
 Player.delete_all
 Team.delete_all
 League.delete_all
-
-
 
 # Access API and pull wanted data
 url = "http://api.statsfc.com/premier-league/table.json?key=DThzCPsM_TI0XUGeUOJqr26JHwtYXVIfYvSSb0ui&year=2013/2014"
