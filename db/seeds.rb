@@ -2,6 +2,7 @@
 require 'HTTParty'
 require 'Nokogiri'
 require 'open-uri'
+include HTTParty
 include Nokogiri
 
 # Create default league 
