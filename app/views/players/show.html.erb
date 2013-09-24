@@ -1,0 +1,6 @@
+<h2> <%= @player.name %> </h2>
+<h4> <%= @player.nationality %> </h4>
+<h4> <%= @player.position %> </h4>
+<h4> <%= @player.age %> </h4>
+
+<%= link_to 'Team Page', team_path(@player.team) %>

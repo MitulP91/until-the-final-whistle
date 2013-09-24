@@ -1,0 +1,21 @@
+<%= form_for team do |f| %>
+	<div>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+	<div>
+		<%= f.label :city %>
+		<%= f.text_field :city %>
+	</div>
+	<div>
+		<%= f.label "Last Year's Table Position: " %>
+		<%= f.number_field :place_last_year %>
+	</div>
+	<div>
+		<%= f.label :league_id %>
+		<%= f.select :league_id, League.all.collect { |league| [ league.name, league.id ] } %> 
+	</div>
+	<div>
+		<%= f.submit %>
+	</div>
+<% end %>

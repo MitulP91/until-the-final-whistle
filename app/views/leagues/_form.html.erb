@@ -1,0 +1,13 @@
+<%= form_for league do |f| %>
+	<div>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+	<div>
+		<%= f.label :country %>
+		<%= f.text_field :country %>
+	</div>
+	<div>
+		<%= f.submit %>
+	</div>
+<% end %>

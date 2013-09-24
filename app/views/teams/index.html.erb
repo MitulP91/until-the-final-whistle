@@ -1,0 +1,12 @@
+<h2> Teams </h2>
+<ul>
+	<% @teams.each do |team| %>
+		<li><%= team.name %></li>
+		<%= link_to "Edit This Team", edit_team_path(team) %>
+		<%= link_to "Add a Player to This Team", new_team_player_path(team) %>
+	<% end %>
+</ul>
+
+  <%= link_to "Add New Team", new_team_path %>
+| <%= link_to "Login", new_user_session_path %>
+| <%= link_to "Logout", destroy_user_session_path, :method => :delete %>

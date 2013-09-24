@@ -1,58 +1,58 @@
 #############
 ## Locally ##
 #############
-development:
-  adapter: postgresql
-  encoding: unicode
-  database: until_the_final_whistle
-  pool: 5
-  host: localhost
-  username: mitulpatel
-  password: 
+# development:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: until_the_final_whistle
+#   pool: 5
+#   host: localhost
+#   username: mitulpatel
+#   password: 
 
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: until_the_final_whistle 
-  pool: 5
-  host: localhost
-  username: mitulpatel
-  password: 
+# test:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: until_the_final_whistle 
+#   pool: 5
+#   host: localhost
+#   username: mitulpatel
+#   password: 
 
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: until_the_final_whistle 
-  pool: 5
-  host: localhost
-  username: mitulpatel
-  password: 
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: until_the_final_whistle 
+#   pool: 5
+#   host: localhost
+#   username: mitulpatel
+#   password: 
 
 
 #################
 ## For Heroku: ##
 #################
 
-# development:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: domdcu1kmqc2m
-#   pool: 5
-#   username: tsueatkihvzpvz
-#   password: mRm8U0HgOhNen6GDdgGemBQXIT
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: domdcu1kmqc2m
+  pool: 5
+  username: tsueatkihvzpvz
+  password: mRm8U0HgOhNen6GDdgGemBQXIT
 
-# test:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: domdcu1kmqc2m
-#   pool: 5
-#   username: tsueatkihvzpvz
-#   password: mRm8U0HgOhNen6GDdgGemBQXIT
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: domdcu1kmqc2m
+  pool: 5
+  username: tsueatkihvzpvz
+  password: mRm8U0HgOhNen6GDdgGemBQXIT
 
-# production:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: domdcu1kmqc2m
-#   pool: 5
-#   username: tsueatkihvzpvz
-#   password: mRm8U0HgOhNen6GDdgGemBQXIT
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: domdcu1kmqc2m
+  pool: 5
+  username: tsueatkihvzpvz
+  password: mRm8U0HgOhNen6GDdgGemBQXIT

@@ -1,0 +1,10 @@
+<h2> <%= @team.name %> </h2>
+
+<ul>
+	<% @team.players.each do |player| %>
+		<li><%= link_to "#{player.name}", team_player_path(player) %></li>
+	<% end %>
+</ul>
+
+<%= link_to "Add a Player to This Team", new_team_player_path(@team) %>
+| <%= link_to "View All Teams", league_path(@team.league) %>
