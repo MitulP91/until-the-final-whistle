@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'httparty'
 gem 'pg'
 gem 'devise'
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
