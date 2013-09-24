@@ -9,6 +9,7 @@
 	<% end %>
 </ul>
 
+<h3> Team News </h3>
 <div class="team-news">
 	<ul>
 		<% @articles.each do |article| %>
@@ -22,10 +23,36 @@
 <h3> Upcoming Fixtures </h3>
 <% @data2.each do |fixture| %>
 	<div class="fixtures">
-		<%= fixture["date"] %>
-		<%= fixture["competition"] %>
-		<%= fixture["home"] + ' vs ' + fixture["away"] %>
+		<div>
+			<%= fixture["date"] + " EST" %>
+		</div>
+		<div>
+			<%= fixture["competition"].gsub("England", "English") %>
+		</div>
+		<div>
+			<%= fixture["home"] + ' vs ' + fixture["away"] %>
+		</div>
 	</div>
+	<br/>
+<% end %>
+
+<h3> Recent Fixtures </h3>
+<% @data3.each do |fixture| %>
+	<div class="fixtures">
+		<div>
+			<%= fixture["date"] + " EST" %>
+		</div>
+		<div>
+			<%= fixture["competition"].gsub("England", "English") %>
+		</div>
+		<div>
+			<%= fixture["home"] + ' vs ' + fixture["away"] %>
+		</div>
+		<div>
+			<%= "#{fixture["fulltime"][0]} - #{fixture["fulltime"][1]}" %>
+		</div>
+	</div>
+	<br/>
 <% end %>
 
 

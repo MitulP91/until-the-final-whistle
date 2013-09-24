@@ -9,6 +9,30 @@
 	<% end %>
 </ul>
 
+<h3> Next 5 EPL Fixtures </h3>
+<% @data.each do |fixture| %>
+	<div class="fixtures">
+		<div>
+			<%= fixture["date"] + " EST" %>
+		</div>
+		<div>
+			<%= fixture["competition"].gsub("England", "English") %>
+		</div>
+		<div>
+			<%= fixture["home"] + ' vs ' + fixture["away"] %>
+		</div>
+	</div>
+	<br/>
+<% end %>
+
+<h3> Top Scorers </h3>
+<% @data2.each do |player| %>
+	<div>
+		<%= "#{player["player"]} - #{player["goals"]}" %>
+	</div>
+	<br/>
+<% end %>
+
 <% if current_user.try(:admin?) %>
   <%= link_to "Add New Team", new_team_path %>
 <% end %>
