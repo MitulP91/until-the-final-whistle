@@ -1,58 +1,58 @@
 #############
 ## Locally ##
 #############
-# development:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: until_the_final_whistle
-#   pool: 5
-#   host: localhost
-#   username: mitulpatel
-#   password: 
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: until_the_final_whistle
+  pool: 5
+  host: localhost
+  username: mitulpatel
+  password: 
 
-# test:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: until_the_final_whistle 
-#   pool: 5
-#   host: localhost
-#   username: mitulpatel
-#   password: 
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: until_the_final_whistle 
+  pool: 5
+  host: localhost
+  username: mitulpatel
+  password: 
 
-# production:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: until_the_final_whistle 
-#   pool: 5
-#   host: localhost
-#   username: mitulpatel
-#   password: 
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: until_the_final_whistle 
+  pool: 5
+  host: localhost
+  username: mitulpatel
+  password: 
 
 
 #################
 ## For Heroku: ##
 #################
 
-development:
-  adapter: postgresql
-  encoding: unicode
-  database: df50s64dt0ourr
-  pool: 5
-  username: mlodnqqqinpwx
-  password: dQEqI2cul1VyPfHoSiH5U-409X
+# development:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: df50s64dt0ourr
+#   pool: 5
+#   username: mlodnqqqinpwx
+#   password: dQEqI2cul1VyPfHoSiH5U-409X
 
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: df50s64dt0ourr
-  pool: 5
-  username: mlodnqqqinpwx
-  password: dQEqI2cul1VyPfHoSiH5U-409X
+# test:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: df50s64dt0ourr
+#   pool: 5
+#   username: mlodnqqqinpwx
+#   password: dQEqI2cul1VyPfHoSiH5U-409X
 
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: df50s64dt0ourr
-  pool: 5
-  username: mlodnqqqinpwx
-  password: dQEqI2cul1VyPfHoSiH5U-409X
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: df50s64dt0ourr
+#   pool: 5
+#   username: mlodnqqqinpwx
+#   password: dQEqI2cul1VyPfHoSiH5U-409X

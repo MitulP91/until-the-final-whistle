@@ -3,7 +3,7 @@ Untilthefinalwhistle::Application.routes.draw do
 
   resources :leagues
   resources :teams do
-    resources :players
+    resources :players, :except => [:index]
   end
 
   root :to => 'teams#index'

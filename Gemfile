@@ -7,6 +7,9 @@ gem 'pg'
 gem 'devise'
 gem 'rails_12factor'
 gem 'uglifier'
+gem 'nokogiri'
+gem 'jquery-rails'
+gem 'pry'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'

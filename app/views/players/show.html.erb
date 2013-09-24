@@ -3,4 +3,7 @@
 <h4> <%= @player.position %> </h4>
 <h4> <%= @player.age %> </h4>
 
-<%= link_to 'Team Page', team_path(@player.team) %>
+<% if current_user.try(:admin?) %>
+	<%= link_to "Edit Player", edit_team_player_path(@player.team, @player) %>
+<% end %>
+| <%= link_to 'Team Page', team_path(@player.team) %>

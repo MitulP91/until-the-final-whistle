@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+	require 'HTTParty'
+
 	def index
 		@teams = Team.all
 	end
@@ -15,6 +17,16 @@ class TeamsController < ApplicationController
 
 	def show
 		@team = Team.find(params[:id])
+		query = @team.name
+
+		url = "https://news.google.com/news/feeds?q=#{query.downcase.gsub(/\s/, '+')}&output=rss"
+		response = HTTParty.get(url)
+		data = response.parsed_response
+		@articles = data["rss"]["channel"]["item"]
+
+		url2 = "http://api.statsfc.com/premier-league/fixtures.json?key=DThzCPsM_TI0XUGeUOJqr26JHwtYXVIfYvSSb0ui&team=#{query.downcase.gsub(/\s/, '+')}&timezone=America/New_York&limit=5"
+		response2 = HTTParty.get(url2)
+		@data2 = response2.parsed_response
 	end
 
 	def edit

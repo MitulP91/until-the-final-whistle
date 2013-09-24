@@ -1,8 +1,4 @@
 class PlayersController < ApplicationController
-	def index
-		@players = Player.all
-	end
-
 	def new
 		@team_id = params[:team_id]
 		@player = Player.new
@@ -21,6 +17,7 @@ class PlayersController < ApplicationController
 	end
 
 	def edit
+		@team_id = params[:team_id]
 		@player = Player.find(params[:id])
 	end
 
@@ -29,6 +26,6 @@ class PlayersController < ApplicationController
 
 		player.update_attributes(params[:player])
 
-		redirect_to team_players_path
+		redirect_to team_path(params[:team_id])
 	end
 end

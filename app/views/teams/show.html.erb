@@ -1,10 +1,60 @@
-<h2> <%= @team.name %> </h2>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
 
+<h2> <%= @team.name %> </h2>
+<h3> Position: <%= @team.current_place %> </h3>
 <ul>
 	<% @team.players.each do |player| %>
-		<li><%= link_to "#{player.name}", team_player_path(player) %></li>
+		<li><%= link_to "#{player.name}", team_player_path(@team.id, player) %></li>
 	<% end %>
 </ul>
 
+<div class="team-news">
+	<ul>
+		<% @articles.each do |article| %>
+			<li>
+				<%= link_to "#{article["title"]}", article["link"], :target => "_blank" %>
+			</li>
+		<% end %>
+	</ul>
+</div>
+
+<h3> Upcoming Fixtures </h3>
+<% @data2.each do |fixture| %>
+	<div class="fixtures">
+		<%= fixture["date"] %>
+		<%= fixture["competition"] %>
+		<%= fixture["home"] + ' vs ' + fixture["away"] %>
+	</div>
+<% end %>
+
+
+<% case @team.name %>
+<% when "Arsenal" %>
+	<a class="twitter-timeline" href="https://twitter.com/Arsenal" data-widget-id="382539495427424256">Tweets by @Arsenal</a>
+<% when "Tottenham Hotspur" %>
+<% when "Manchester City" %>
+<% when "Chelsea" %>
+	<a class="twitter-timeline" href="https://twitter.com/chelseafc" data-widget-id="382544792107745280">Tweets by @chelseafc</a>
+<% when "Liverpool" %>
+<% when "Everton" %>
+<% when "Manchester United" %>
+<% when "Southampton" %>
+<% when "Swansea City" %>
+<% when "Stoke City" %>
+<% when "Hull City" %>
+<% when "Newcastle United" %>
+<% when "Aston Villa" %>
+<% when "West Bromwich Albion" %>
+<% when "West Ham United" %>
+<% when "Cardiff City" %>
+<% when "Norwich City" %>
+<% when "Fulham" %>
+<% when "Crystal Palace" %>
+<% when "Sunderland" %>
+<% end %>
+
+<% if current_user.try(:admin?) %>
 <%= link_to "Add a Player to This Team", new_team_player_path(@team) %>
+<% end %>
 | <%= link_to "View All Teams", league_path(@team.league) %>
