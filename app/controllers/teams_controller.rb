@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-	require 'HTTParty'
+	require 'httparty'
 
 	def index
 		@teams = Team.all
