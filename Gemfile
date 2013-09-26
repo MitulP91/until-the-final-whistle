@@ -9,6 +9,7 @@ gem 'rails_12factor'
 gem 'uglifier'
 gem 'nokogiri'
 gem 'jquery-rails'
+gem 'font-awesome-rails'
 gem 'pry'
 
 group :development, :test do

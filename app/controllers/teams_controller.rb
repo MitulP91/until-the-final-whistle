@@ -1,50 +1,56 @@
 class TeamsController < ApplicationController
-	require 'httparty'
+	# Includes module to make HTTParty methods DRY
+	include PartyTime
 
+	# Also the root page.
 	def index
 		@teams = Team.all
 
-		url = "http://api.statsfc.com/premier-league/fixtures.json?key=DThzCPsM_TI0XUGeUOJqr26JHwtYXVIfYvSSb0ui&timezone=America/New_York&limit=5"
-		response = HTTParty.get(url)
-		@data = response.parsed_response
+		# Pulls upcoming fixtures in Premier League
+		@data = party_time("http://api.statsfc.com/premier-league/fixtures.json?key=DThzCPsM_TI0XUGeUOJqr26JHwtYXVIfYvSSb0ui&timezone=America/New_York&limit=10")
 
-		url2 = "http://api.statsfc.com/top-scorers.json?key=DThzCPsM_TI0XUGeUOJqr26JHwtYXVIfYvSSb0ui&competition=premier-league&year=2013/2014&limit=5"
-		response2 = HTTParty.get(url2)
-		@data2 = response2.parsed_response		
+		# Pulls top scorers in Premier League
+		@data2 = party_time("http://api.statsfc.com/top-scorers.json?key=DThzCPsM_TI0XUGeUOJqr26JHwtYXVIfYvSSb0ui&competition=premier-league&year=2013/2014&limit=5")	
+
+		# Pulls news articles about the league through Google RSS
+		data = party_time("https://news.google.com/news/feeds?q=barclays+premier+league&output=rss")
+		@articles = data["rss"]["channel"]["item"]
 	end
 
+	# Creates new team (admin only)
 	def new
 		@team = Team.new
 	end
 
+	# Posts new team (admin only)
 	def create
 		Team.create(params[:team])
 
 		redirect_to teams_path
 	end
 
+	# Displays each individual team with players and other stats
 	def show
 		@team = Team.find(params[:id])
 		query = @team.name
 
-		url = "https://news.google.com/news/feeds?q=#{query.downcase.gsub(/\s/, '+')}&output=rss"
-		response = HTTParty.get(url)
-		data = response.parsed_response
+		# Pulls news articles about each team through Google RSS
+		data = party_time("https://news.google.com/news/feeds?q=#{query.downcase.gsub(/\s/, '+')}&output=rss")
 		@articles = data["rss"]["channel"]["item"]
 
-		url2 = "http://api.statsfc.com/premier-league/fixtures.json?key=DThzCPsM_TI0XUGeUOJqr26JHwtYXVIfYvSSb0ui&team=#{query.downcase.gsub(/\s/, '-')}&timezone=America/New_York&limit=5"
-		response2 = HTTParty.get(url2)
-		@data2 = response2.parsed_response
+		# Pulls upcoming fixtures for this team
+		@data2 = party_time("http://api.statsfc.com/premier-league/fixtures.json?key=DThzCPsM_TI0XUGeUOJqr26JHwtYXVIfYvSSb0ui&team=#{query.downcase.gsub(/\s/, '-')}&timezone=America/New_York&limit=5")
 
-		url3 = "http://api.statsfc.com/premier-league/results.json?key=DThzCPsM_TI0XUGeUOJqr26JHwtYXVIfYvSSb0ui&team=#{query.downcase.gsub(/\s/, '-')}&timezone=America/New_York&limit=5"
-		response3 = HTTParty.get(url3)
-		@data3 = response3.parsed_response
+		# Pulls past results for this team 
+		@data3 = party_time("http://api.statsfc.com/premier-league/results.json?key=DThzCPsM_TI0XUGeUOJqr26JHwtYXVIfYvSSb0ui&team=#{query.downcase.gsub(/\s/, '-')}&timezone=America/New_York&limit=5")
 	end
 
+	# Edit team (admin only)
 	def edit
 		@team = Team.find(params[:id])
 	end
 
+	# Post edited team (admin only)
 	def update
 		team = Team.find(params[:id])
 		team.update_attributes(params[:team])

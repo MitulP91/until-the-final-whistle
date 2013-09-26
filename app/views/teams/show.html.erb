@@ -1,76 +1,104 @@
+<!-- Includes necessary script for Twitter timelines -->
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 </script>
+<!-- End Twitter script -->
 
-<h2> <%= @team.name %> </h2>
-<h3> Position: <%= @team.current_place %> </h3>
-<ul>
-	<% @team.players.each do |player| %>
-		<li><%= link_to "#{player.name}", team_player_path(@team.id, player) %></li>
+<!-- Displays basic team information -->
+<h2 class="team-title"> <%= @team.name %> </h2>
+<h4 class="team-title"> Current Table Position: <%= @team.current_place %> </h4>
+<!-- End basic team information -->
+<div class="row"></div>
+<!-- Displays teams players -->
+<div class="columns three teams">
+	<h2 class="home-title">Players</h2>
+	<ul>
+		<% @team.players.each do |player| %>
+			<li class="player-name"><%= link_to "#{player.name}", team_player_path(@team.id, player) %></li>
+		<% end %>
+	</ul>
+</div>
+<!-- End team players -->
+
+<!-- Displays the teams future fixtures -->
+<div class="thirteen columns alpha fixture-holder">
+	<h4 class="white fix-head">Upcoming Fixtures:</h4>
+	<% @data2.each do |fixture| %>
+		<div class="team-fixtures">
+			<ul>
+				<li>	
+				<%= fixture["date"] + " EST" %>
+				<br/>
+				<%= fixture["competition"].gsub("England", "English") %>
+				<br/>
+				<strong class="white"><%= fixture["home"] + ' vs ' + fixture["away"] %></strong>
+				</li>
+			</ul>
+		</div>
 	<% end %>
-</ul>
+</div>
+<!-- End team future fixtures -->
 
-<h3> Team News </h3>
-<div class="team-news">
+<!-- Displays the teams last few fixtures -->
+<div class="thirteen columns alpha fixture-holder top-marg">
+	<h4 class="white fix-rec">Recent Fixtures:</h4>
+	<% @data3.each do |fixture| %>
+		<div class="team-fixtures">
+			<ul>
+				<li>	
+				<%= fixture["date"] + " EST" %>
+				<br/>
+				<%= fixture["competition"].gsub("England", "English") %>
+				<br/>
+				<strong class="white"><%= fixture["home"] + ' vs ' + fixture["away"] %></strong>
+				<br/>
+				<strong class="white"><%= "#{fixture["fulltime"][0]} - #{fixture["fulltime"][1]}" %></strong>
+				</li>
+			</ul>
+		</div>
+	<% end %>
+</div>
+<!-- End team past fixtures -->
+
+<!-- Displays team news -->
+<div class="columns thirteen alpha team-news">
+	<h3 class="white"> Team News </h3>
 	<ul>
 		<% @articles.each do |article| %>
 			<li>
 				<%= link_to "#{article["title"]}", article["link"], :target => "_blank" %>
 			</li>
 		<% end %>
-	</ul>
+		</ul>
 </div>
-
-<h3> Upcoming Fixtures </h3>
-<% @data2.each do |fixture| %>
-	<div class="fixtures">
-		<div>
-			<%= fixture["date"] + " EST" %>
-		</div>
-		<div>
-			<%= fixture["competition"].gsub("England", "English") %>
-		</div>
-		<div>
-			<%= fixture["home"] + ' vs ' + fixture["away"] %>
-		</div>
-	</div>
-	<br/>
-<% end %>
-
-<h3> Recent Fixtures </h3>
-<% @data3.each do |fixture| %>
-	<div class="fixtures">
-		<div>
-			<%= fixture["date"] + " EST" %>
-		</div>
-		<div>
-			<%= fixture["competition"].gsub("England", "English") %>
-		</div>
-		<div>
-			<%= fixture["home"] + ' vs ' + fixture["away"] %>
-		</div>
-		<div>
-			<%= "#{fixture["fulltime"][0]} - #{fixture["fulltime"][1]}" %>
-		</div>
-	</div>
-	<br/>
-<% end %>
-
-
+<!-- End team news -->
+<div class="row"></div>
+<!-- Embeds Twitter feed based on team name -->
+<div class="columns sixteen">
 <% case @team.name %>
 <% when "Arsenal" %>
 	<a class="twitter-timeline" href="https://twitter.com/Arsenal" data-widget-id="382539495427424256">Tweets by @Arsenal</a>
 <% when "Tottenham Hotspur" %>
+	<a class="twitter-timeline" href="https://twitter.com/SpursOfficial" data-widget-id="383043965726896128">Tweets by @SpursOfficial</a>
 <% when "Manchester City" %>
+	<a class="twitter-timeline" href="https://twitter.com/MCFC" data-widget-id="383045411105013760">Tweets by @MCFC</a>
 <% when "Chelsea" %>
 	<a class="twitter-timeline" href="https://twitter.com/chelseafc" data-widget-id="382544792107745280">Tweets by @chelseafc</a>
 <% when "Liverpool" %>
+	<a class="twitter-timeline" href="https://twitter.com/LFC" data-widget-id="383045713782771713">Tweets by @LFC</a>
 <% when "Everton" %>
+	<a class="twitter-timeline" href="https://twitter.com/Everton" data-widget-id="383045970092498944">Tweets by @Everton</a>
 <% when "Manchester United" %>
+	<a class="twitter-timeline" href="https://twitter.com/ManUtd" data-widget-id="383046169426800640">Tweets by @ManUtd</a>
 <% when "Southampton" %>
+	<a class="twitter-timeline" href="https://twitter.com/SouthamptonFC" data-widget-id="383046343117123584">Tweets by @SouthamptonFC</a>
 <% when "Swansea City" %>
+	<a class="twitter-timeline" href="https://twitter.com/SwansOfficial" data-widget-id="383046561711673344">Tweets by @SwansOfficial</a>
 <% when "Stoke City" %>
+	<a class="twitter-timeline" href="https://twitter.com/stokecity" data-widget-id="383046692943065089">Tweets by @stokecity</a>
 <% when "Hull City" %>
+	<a class="twitter-timeline" href="https://twitter.com/hullcityteam" data-widget-id="383046817920729088">Tweets by @hullcityteam</a>
 <% when "Newcastle United" %>
+	<a class="twitter-timeline" href="https://twitter.com/NUFCOfficial" data-widget-id="383047084854636545">Tweets by @NUFCOfficial</a>
 <% when "Aston Villa" %>
 <% when "West Bromwich Albion" %>
 <% when "West Ham United" %>
@@ -80,8 +108,9 @@
 <% when "Crystal Palace" %>
 <% when "Sunderland" %>
 <% end %>
+</div>
+<!-- End Twitter feed -->
 
 <% if current_user.try(:admin?) %>
 <%= link_to "Add a Player to This Team", new_team_player_path(@team) %>
 <% end %>
-| <%= link_to "View All Teams", league_path(@team.league) %>

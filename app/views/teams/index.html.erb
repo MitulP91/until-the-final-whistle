@@ -1,37 +1,63 @@
-<h2> Teams </h2>
-<ul>
-	<% @teams.each do |team| %>
-		<li><%= link_to "#{team.name}", team_path(team) %></li>
-		<% if current_user.try(:admin?) %>
-			<%= link_to "Edit This Team", edit_team_path(team) %>
-			<%= link_to "Add a Player to This Team", new_team_player_path(team) %>
-		<% end %>
+<!-- Displays next fixtures in this league -->
+<div class="columns sixteen fixture-holder">
+	<% @data.each do |fixture| %>
+		<div class="fixtures">
+		<ul>
+			<li>
+				<%= fixture["date"] + " EST" %>
+				<br/>
+				<%= fixture["competition"].gsub("England", "English") %>
+				<br/>
+				<strong class="white"><%= fixture["home"] + ' vs ' + fixture["away"] %></strong>
+			</li>
+		</ul>
+		</div>
 	<% end %>
-</ul>
+</div>
+<!-- End fixtures -->
 
-<h3> Next 5 EPL Fixtures </h3>
-<% @data.each do |fixture| %>
-	<div class="fixtures">
-		<div>
-			<%= fixture["date"] + " EST" %>
-		</div>
-		<div>
-			<%= fixture["competition"].gsub("England", "English") %>
-		</div>
-		<div>
-			<%= fixture["home"] + ' vs ' + fixture["away"] %>
-		</div>
-	</div>
-	<br/>
-<% end %>
+<div class="row"></div>
 
-<h3> Top Scorers </h3>
-<% @data2.each do |player| %>
-	<div>
-		<%= "#{player["player"]} - #{player["goals"]}" %>
-	</div>
-	<br/>
-<% end %>
+<!-- Displays all teams in the league -->
+<div class="columns three teams">
+	<h2 class="home-title">Teams</h2>
+	<ul>
+		<% @teams.each do |team| %>
+			<li class="team-name"><%= link_to "#{team.name}", team_path(team) %></li>
+			<% if current_user.try(:admin?) %>
+				<%= link_to "Edit This Team", edit_team_path(team) %>
+				<%= link_to "Add a Player to This Team", new_team_player_path(team) %>
+			<% end %>
+		<% end %>
+	</ul>
+</div>
+<!-- End teams -->
+
+<!-- Display image -->
+<div class="columns ten">
+	<%= image_tag("epl.png", :alt => "EPL", :class => "epl") %>
+	<div class="row"></div>
+	<div class="league-news">
+	<ul>
+		<% @articles.each do |article| %>
+			<li>
+				<%= link_to "#{article["title"]}", article["link"], :target => "_blank" %>
+			</li>
+		<% end %>
+	</ul>
+</div>
+</div>
+<!-- End display image -->
+<!-- Displays top scorers in this league -->
+<div class="columns three teams alpha">
+	<h2 class="home-title"> Top Scorers </h2>
+	<% @data2.each do |player| %>
+		<div>
+			<%= "#{player["player"]} - #{player["goals"]}" %>
+		</div>
+	<% end %>
+</div>
+<!-- End top scorers -->
 
 <% if current_user.try(:admin?) %>
   <%= link_to "Add New Team", new_team_path %>

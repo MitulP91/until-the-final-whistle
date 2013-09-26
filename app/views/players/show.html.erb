@@ -2,6 +2,7 @@
 <h4> <%= @player.nationality %> </h4>
 <h4> <%= @player.position %> </h4>
 <h4> <%= @player.age %> </h4>
+<h4> <%= @player.bio %> </h4>
 
 <% if current_user.try(:admin?) %>
 	<%= link_to "Edit Player", edit_team_player_path(@player.team, @player) %>

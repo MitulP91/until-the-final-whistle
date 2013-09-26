@@ -1,0 +1,357 @@
+/***************/
+/* GENERAL CSS */
+/***************/
+body {
+	background: white;
+	color: white;
+	text-align: center;
+}
+
+footer {
+	height: 10px;
+	background-color: black;
+}
+
+.container {
+	background-color: #104E8B;
+	border-left: 10px solid rgba(0,0,0,0.8);
+	border-right: 10px solid rgba(0,0,0,0.8);
+}
+
+/*******************/
+/* Header Menu CSS */
+/*******************/
+#menu
+{
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px 0 0 0;
+    list-style: none;  
+    background: #111;
+    background: -moz-linear-gradient(#444, #111); 
+    background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #111),color-stop(1, #444));    
+    background: -webkit-linear-gradient(#444, #111);    
+    background: -o-linear-gradient(#444, #111);
+    background: -ms-linear-gradient(#444, #111);
+    background: linear-gradient(#444, #111);
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    -moz-box-shadow: 0 2px 1px #9c9c9c;
+    -webkit-box-shadow: 0 2px 1px #9c9c9c;
+    box-shadow: 0 2px 1px #9c9c9c;
+    text-align: center;
+}
+
+#menu li
+{
+    padding: 0 0 10px 0;
+    position: relative;
+    line-height: 0;
+    display: inline-block;
+    *display: inline;    
+    zoom: 1;
+    margin: 0 auto;
+}
+
+#menu a 
+{
+    display: inline-block;
+    *display: inline;    
+    zoom: 1;
+    height: 25px;
+    padding: 0 25px;
+    color: white;
+    text-transform: uppercase;
+    font: bold 12px/25px Arial, Helvetica;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #000;
+}
+
+#menu li:hover > a
+{
+    color: #1BA1E2;
+}
+
+*html #menu li a:hover /* IE6 */
+{
+    color: #1BA1E2;
+}
+
+#menu li:hover > ul
+{
+    display: block;
+}
+
+/* Sub-menu */
+
+#menu ul
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;    
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    z-index: 99999;    
+    background: #444;
+    background: -moz-linear-gradient(#444, #111);
+    background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #111),color-stop(1, #444));
+    background: -webkit-linear-gradient(#444, #111);    
+    background: -o-linear-gradient(#444, #111);    
+    background: -ms-linear-gradient(#444, #111);    
+    background: linear-gradient(#444, #111);
+    -moz-box-shadow: 0 0 2px rgba(255,255,255,.5);
+    -webkit-box-shadow: 0 0 2px rgba(255,255,255,.5);
+    box-shadow: 0 0 2px rgba(255,255,255,.5);    
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+#menu ul ul
+{
+  top: 0;
+  left: 150px;
+}
+
+#menu ul li
+{
+    float: none;
+    margin: 0;
+    padding: 0;
+    display: block;  
+    -moz-box-shadow: 0 1px 0 #111111, 0 2px 0 #777777;
+    -webkit-box-shadow: 0 1px 0 #111111, 0 2px 0 #777777;
+    box-shadow: 0 1px 0 #111111, 0 2px 0 #777777;
+}
+
+#menu ul li:last-child
+{   
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;    
+}
+
+#menu ul a
+{    
+    padding: 10px;
+    height: 10px;
+    width: 130px;
+    height: auto;
+    line-height: 1;
+    display: block;
+    white-space: nowrap;
+    float: none;
+    text-transform: none;
+}
+
+*html #menu ul a /* IE6 */
+{    
+    height: 10px;
+}
+
+*:first-child+html #menu ul a /* IE7 */
+{    
+    height: 10px;
+}
+
+#menu ul li:first-child > a
+{
+    -moz-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+#menu ul li:first-child > a:after
+{
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #444;
+}
+
+#menu ul ul li:first-child a:after
+{
+    left: -8px;
+    top: 12px;
+    width: 0;
+    height: 0;
+    border-left: 0;    
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
+    border-right: 8px solid #444;
+}
+
+#menu ul li:first-child a:hover:after
+{
+    border-bottom-color: #04acec; 
+}
+
+#menu ul ul li:first-child a:hover:after
+{
+    border-right-color: #04acec; 
+    border-bottom-color: transparent;     
+}
+
+
+#menu ul li:last-child > a
+{
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Clear floated elements */
+#menu:after 
+{
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+/*****************/
+/* MAIN PAGE CSS */
+/*****************/
+#title {
+	color: white;
+}
+
+.home-title {
+	color: white;
+	text-decoration: underline;
+}
+
+.epl {
+	width: 100%;
+	height: 300px;
+}
+
+.league-news {
+	height: 124px;
+	overflow: scroll;
+	background-color: rgba(0,0,0,0.8);
+	border: 2px solid white;
+}
+
+.league-news a {
+	color: white;
+	text-decoration: none;
+}
+
+.league-news a:hover {
+	color: #1BA1E2;
+}
+
+.teams {
+	height: 450px;
+	overflow-y: scroll;
+	background-color: rgba(0,0,0,0.8);
+	border: 2px solid white;
+}
+
+.teams a {
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.teams a:hover {
+	color: #1BA1E2;
+}
+
+.team-name {
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+	padding: 3px 0px;
+}
+
+.fixture-holder {
+	height: 90px;
+	overflow-x: scroll;
+	background-color: rgba(0,0,0,0.8);
+	border: 2px solid white;
+	text-align: left;
+}
+
+.fixtures {
+	width: 2500px;
+}
+
+.fixtures ul li, .team-fixtures ul li {
+	float: left;
+	padding: 0px 15px;
+}
+
+.white {
+	color: white;
+}
+
+/**********************/
+/* TEAM SHOW PAGE CSS */
+/**********************/
+.team-title {
+	color: white;
+}
+
+.player-name {
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+	padding: 3px 0px;
+}
+
+.fix-head {
+	float: left;
+	line-height: 90px;
+	margin-right: 10px;
+}
+
+.team-fixtures {
+	width: 1300px;
+}
+
+.top-marg {
+	margin-top: 10px;
+	height: 110px;
+}
+
+.fix-rec {
+	float: left;
+	line-height: 110px;
+	margin-right: 10px;
+}
+
+.team-news {
+	color: white;
+	margin-top: 10px;
+	height: 222px;
+	background-color: rgba(0,0,0,0.8);
+	border: 2px solid white;
+	overflow-y: scroll;
+}
+
+.team-news a {
+	color: white;
+	text-decoration: none;
+}
+
+.team-news a:hover {
+	color: #1BA1E2;
+}
+
+.twitter-timeline {
+	width: 100%;
+}
+
+
+
+
+
+
+

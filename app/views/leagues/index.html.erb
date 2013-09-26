@@ -2,7 +2,7 @@
 
 <ul>
 	<% @leagues.each do |league| %>
-		<li><%= link_to "#{league.name}", league_path(league) %></li>
+		<li><%= link_to "#{league.name}", teams_path %></li>
 		<% if current_user.try(:admin?) %>
 		<%= link_to "Edit This League", edit_league_path(league) %>
 		<% end %>
