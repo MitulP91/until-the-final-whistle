@@ -2,14 +2,23 @@
 /* GENERAL CSS */
 /***************/
 body {
-	background: white;
 	color: white;
 	text-align: center;
+    background-image: url('soccer-bg.jpg');
 }
 
 footer {
 	height: 10px;
 	background-color: black;
+}
+
+form {
+    width: 200px;
+    margin: 0 auto;
+}
+
+form a {
+    color: white;
 }
 
 .container {
@@ -313,7 +322,7 @@ footer {
 }
 
 .team-fixtures {
-	width: 1300px;
+	width: 1450px;
 }
 
 .top-marg {
@@ -345,13 +354,58 @@ footer {
 	color: #1BA1E2;
 }
 
+.bg {
+    background-color: white;
+    border-radius: 50%;
+}
+
+.middle {
+    margin-top: 100px;
+}
+
 .twitter-timeline {
 	width: 100%;
 }
 
+/*********************/
+/* FAVORITE PAGE CSS */
+/*********************/
+.faves {
+    background-color: rgba(0,0,0,0.8);
+    border: 2px solid white;
+    color: white;
+    width: 300px;
+    margin: auto;
+}
 
+.faves h3, .faves h2 {
+    color: white;
+}
+.faves a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
 
+.faves a:hover {
+    color: #1BA1E2;
+}
 
+/************************/
+/* PLAYER SHOW PAGE CSS */
+/************************/
+.player-pic {
+    border: 2px solid white;
+}
 
+.player-info h2, .player-info h4 {
+    color: white;
+}
+
+#bio {
+    text-align: left;
+    margin-left: 15px;
+    color: white;
+}
 
 

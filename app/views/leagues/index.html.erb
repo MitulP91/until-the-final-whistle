@@ -1,5 +1,6 @@
 <h1>Leagues</h1>
 
+<!-- Displays all leagues currently in database -->
 <ul>
 	<% @leagues.each do |league| %>
 		<li><%= link_to "#{league.name}", teams_path %></li>
@@ -8,8 +9,11 @@
 		<% end %>
 	<% end %>
 </ul>
+<!-- End leagues display -->
 
+<!-- Add functionality for admin -->
 <% if current_user.try(:admin?) %>
   <%= link_to "Add New League", new_league_path %>
 | <%= link_to "Add New Team", new_team_path %>
 <% end %>
+<!-- End add functionality -->

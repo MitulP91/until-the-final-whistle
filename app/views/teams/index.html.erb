@@ -26,6 +26,7 @@
 			<li class="team-name"><%= link_to "#{team.name}", team_path(team) %></li>
 			<% if current_user.try(:admin?) %>
 				<%= link_to "Edit This Team", edit_team_path(team) %>
+				<br/>
 				<%= link_to "Add a Player to This Team", new_team_player_path(team) %>
 			<% end %>
 		<% end %>

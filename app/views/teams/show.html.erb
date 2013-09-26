@@ -1,13 +1,19 @@
-<!-- Includes necessary script for Twitter timelines -->
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-</script>
-<!-- End Twitter script -->
+<!-- Displays basic team information and crest/logo -->
+<div class="ten columns offset-by-three">
+	<%= image_tag("#{@team.name.downcase.gsub(/\s/, '-')}.png", :class => "five columns bg") %>
 
-<!-- Displays basic team information -->
-<h2 class="team-title"> <%= @team.name %> </h2>
-<h4 class="team-title"> Current Table Position: <%= @team.current_place %> </h4>
+	<div class="middle">
+		<h2 class="team-title"> <%= @team.name %> </h2>
+		<h4 class="team-title"> Current Table Position: <%= @team.current_place %> </h4>
+		<% if user_signed_in? && !current_user.teams.map { |fav| fav.id }.include?(@team.id) %>
+			<%= button_to "Add to Favorites", new_favorites_path(@team) %>
+		<% end %>
+	</div>
+</div>
 <!-- End basic team information -->
+
 <div class="row"></div>
+
 <!-- Displays teams players -->
 <div class="columns three teams">
 	<h2 class="home-title">Players</h2>
@@ -68,47 +74,14 @@
 				<%= link_to "#{article["title"]}", article["link"], :target => "_blank" %>
 			</li>
 		<% end %>
-		</ul>
+	</ul>
 </div>
 <!-- End team news -->
+
 <div class="row"></div>
+
 <!-- Embeds Twitter feed based on team name -->
-<div class="columns sixteen">
-<% case @team.name %>
-<% when "Arsenal" %>
-	<a class="twitter-timeline" href="https://twitter.com/Arsenal" data-widget-id="382539495427424256">Tweets by @Arsenal</a>
-<% when "Tottenham Hotspur" %>
-	<a class="twitter-timeline" href="https://twitter.com/SpursOfficial" data-widget-id="383043965726896128">Tweets by @SpursOfficial</a>
-<% when "Manchester City" %>
-	<a class="twitter-timeline" href="https://twitter.com/MCFC" data-widget-id="383045411105013760">Tweets by @MCFC</a>
-<% when "Chelsea" %>
-	<a class="twitter-timeline" href="https://twitter.com/chelseafc" data-widget-id="382544792107745280">Tweets by @chelseafc</a>
-<% when "Liverpool" %>
-	<a class="twitter-timeline" href="https://twitter.com/LFC" data-widget-id="383045713782771713">Tweets by @LFC</a>
-<% when "Everton" %>
-	<a class="twitter-timeline" href="https://twitter.com/Everton" data-widget-id="383045970092498944">Tweets by @Everton</a>
-<% when "Manchester United" %>
-	<a class="twitter-timeline" href="https://twitter.com/ManUtd" data-widget-id="383046169426800640">Tweets by @ManUtd</a>
-<% when "Southampton" %>
-	<a class="twitter-timeline" href="https://twitter.com/SouthamptonFC" data-widget-id="383046343117123584">Tweets by @SouthamptonFC</a>
-<% when "Swansea City" %>
-	<a class="twitter-timeline" href="https://twitter.com/SwansOfficial" data-widget-id="383046561711673344">Tweets by @SwansOfficial</a>
-<% when "Stoke City" %>
-	<a class="twitter-timeline" href="https://twitter.com/stokecity" data-widget-id="383046692943065089">Tweets by @stokecity</a>
-<% when "Hull City" %>
-	<a class="twitter-timeline" href="https://twitter.com/hullcityteam" data-widget-id="383046817920729088">Tweets by @hullcityteam</a>
-<% when "Newcastle United" %>
-	<a class="twitter-timeline" href="https://twitter.com/NUFCOfficial" data-widget-id="383047084854636545">Tweets by @NUFCOfficial</a>
-<% when "Aston Villa" %>
-<% when "West Bromwich Albion" %>
-<% when "West Ham United" %>
-<% when "Cardiff City" %>
-<% when "Norwich City" %>
-<% when "Fulham" %>
-<% when "Crystal Palace" %>
-<% when "Sunderland" %>
-<% end %>
-</div>
+<%= render partial: "twitter", locals: {team: @team.name} %>
 <!-- End Twitter feed -->
 
 <% if current_user.try(:admin?) %>

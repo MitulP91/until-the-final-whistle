@@ -1,0 +1,51 @@
+<!-- Includes necessary script for Twitter timelines -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+<!-- End Twitter script -->
+
+<!-- Embeds Twitter feed based on team name -->
+<div class="columns sixteen">
+	<% case team %>
+	<% when "Arsenal" %>
+		<a class="twitter-timeline" href="https://twitter.com/Arsenal" data-widget-id="382539495427424256">Tweets by @Arsenal</a>
+	<% when "Tottenham Hotspur" %>
+		<a class="twitter-timeline" href="https://twitter.com/SpursOfficial" data-widget-id="383043965726896128">Tweets by @SpursOfficial</a>
+	<% when "Manchester City" %>
+		<a class="twitter-timeline" href="https://twitter.com/MCFC" data-widget-id="383045411105013760">Tweets by @MCFC</a>
+	<% when "Chelsea" %>
+		<a class="twitter-timeline" href="https://twitter.com/chelseafc" data-widget-id="382544792107745280">Tweets by @chelseafc</a>
+	<% when "Liverpool" %>
+		<a class="twitter-timeline" href="https://twitter.com/LFC" data-widget-id="383045713782771713">Tweets by @LFC</a>
+	<% when "Everton" %>
+		<a class="twitter-timeline" href="https://twitter.com/Everton" data-widget-id="383045970092498944">Tweets by @Everton</a>
+	<% when "Manchester United" %>
+		<a class="twitter-timeline" href="https://twitter.com/ManUtd" data-widget-id="383046169426800640">Tweets by @ManUtd</a>
+	<% when "Southampton" %>
+		<a class="twitter-timeline" href="https://twitter.com/SouthamptonFC" data-widget-id="383046343117123584">Tweets by @SouthamptonFC</a>
+	<% when "Swansea City" %>
+		<a class="twitter-timeline" href="https://twitter.com/SwansOfficial" data-widget-id="383046561711673344">Tweets by @SwansOfficial</a>
+	<% when "Stoke City" %>
+		<a class="twitter-timeline" href="https://twitter.com/stokecity" data-widget-id="383046692943065089">Tweets by @stokecity</a>
+	<% when "Hull City" %>
+		<a class="twitter-timeline" href="https://twitter.com/hullcityteam" data-widget-id="383046817920729088">Tweets by @hullcityteam</a>
+	<% when "Newcastle United" %>
+		<a class="twitter-timeline" href="https://twitter.com/NUFCOfficial" data-widget-id="383047084854636545">Tweets by @NUFCOfficial</a>
+	<% when "Aston Villa" %>
+		<a class="twitter-timeline" href="https://twitter.com/AVFCOfficial" data-widget-id="383220320741498880">Tweets by @AVFCOfficial</a>
+	<% when "West Bromwich Albion" %>
+		<a class="twitter-timeline" href="https://twitter.com/WBAFCofficial" data-widget-id="383220460143394817">Tweets by @WBAFCofficial</a>
+	<% when "West Ham United" %>
+		<a class="twitter-timeline" href="https://twitter.com/whufc_official" data-widget-id="383220727417028608">Tweets by @whufc_official</a>
+	<% when "Cardiff City" %>
+		<a class="twitter-timeline" href="https://twitter.com/CardiffCityFC" data-widget-id="383220876147040257">Tweets by @CardiffCityFC</a>
+	<% when "Norwich City" %>
+		<a class="twitter-timeline" href="https://twitter.com/NorwichCityFC" data-widget-id="383221060847403008">Tweets by @NorwichCityFC</a>
+	<% when "Fulham" %>
+		<a class="twitter-timeline" href="https://twitter.com/FulhamFC" data-widget-id="383221265281978368">Tweets by @FulhamFC</a>
+	<% when "Crystal Palace" %>
+		<a class="twitter-timeline" href="https://twitter.com/Official_CPFC" data-widget-id="383221402939047936">Tweets by @Official_CPFC</a>
+	<% when "Sunderland" %>
+		<a class="twitter-timeline" href="https://twitter.com/SAFCofficial" data-widget-id="383221545406976001">Tweets by @SAFCofficial</a>
+	<% end %>
+</div>
+<!-- End Twitter Feed -->

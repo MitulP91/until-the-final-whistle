@@ -1,0 +1,14 @@
+<!-- Displays favorite teams if they exist -->
+<div class="faves">
+	<% if @user.teams == [] %>
+		<h3> You have no favorites yet! </h3>
+	<% else %>
+		<h2> Your Favorites </h2>
+		<% @user.teams.each do |fav| %>
+			<ul>
+				<li><%= link_to "#{fav.name}", team_path(fav) %></li>
+			</ul>
+		<% end %>
+	<% end %>
+</div>
+<!-- Ends favorites display -->

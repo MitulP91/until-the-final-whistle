@@ -1,10 +1,14 @@
+<!-- Display basic league info -->
 <h2> <%= @league.name %> </h2>
 <h3> <%= @league.country %> </h3>
+<!-- End league info -->
 
+<!-- Display teams in the league -->
 <ul>
 	<% @league.teams.each do |team| %>
 		<li><%= link_to "#{team.name}", team_path(team) %></li>
 	<% end %>
 </ul>
+<!-- End team display -->
 
 <%= link_to "View All Leagues", leagues_path %>

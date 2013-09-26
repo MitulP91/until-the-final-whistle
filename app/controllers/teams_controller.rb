@@ -4,13 +4,13 @@ class TeamsController < ApplicationController
 
 	# Also the root page.
 	def index
-		@teams = Team.all
+		@teams = Team.order("name ASC").all
 
 		# Pulls upcoming fixtures in Premier League
 		@data = party_time("http://api.statsfc.com/premier-league/fixtures.json?key=DThzCPsM_TI0XUGeUOJqr26JHwtYXVIfYvSSb0ui&timezone=America/New_York&limit=10")
 
 		# Pulls top scorers in Premier League
-		@data2 = party_time("http://api.statsfc.com/top-scorers.json?key=DThzCPsM_TI0XUGeUOJqr26JHwtYXVIfYvSSb0ui&competition=premier-league&year=2013/2014&limit=5")	
+		@data2 = party_time("http://api.statsfc.com/top-scorers.json?key=DThzCPsM_TI0XUGeUOJqr26JHwtYXVIfYvSSb0ui&competition=premier-league&year=2013/2014&limit=10")	
 
 		# Pulls news articles about the league through Google RSS
 		data = party_time("https://news.google.com/news/feeds?q=barclays+premier+league&output=rss")
@@ -56,5 +56,16 @@ class TeamsController < ApplicationController
 		team.update_attributes(params[:team])
 
 		redirect_to teams_path
+	end
+
+	def favorites
+		@user = current_user
+	end
+
+	def favorites_create
+		team = Team.find(params[:team_id])
+		current_user.teams << team
+
+		redirect_to team_path(team)
 	end
 end

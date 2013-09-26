@@ -1,23 +1,29 @@
 class PlayersController < ApplicationController
+	require 'nokogiri'
+	require 'open-uri'
+
 	def new
-		@team_id = params[:team_id]
+		@team = Team.find(params[:team_id])
 		@player = Player.new
 	end
 
 	def create
 		team = Team.find(params[:team_id])
-		player = Player.new(params[:player])
+		player = Player.create(params[:player])
 		team.players << player
 
-		redirect_to team_players_path
+		redirect_to team_path(params[:team_id])
 	end
 
 	def show
 		@player = Player.find(params[:id])
+
+		doc = Nokogiri::HTML(open("http://www.bing.com/images/search?q=#{@player.name.gsub(/\s/, '+')}+#{@player.team.name.gsub(/\s/, '+')}"))
+		@pic = doc.css('.imgres:first-child a img')[0].attributes['src2'].value
 	end
 
 	def edit
-		@team_id = params[:team_id]
+		@team = Team.find(params[:team_id])
 		@player = Player.find(params[:id])
 	end
 

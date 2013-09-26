@@ -33,7 +33,7 @@ data.each do |some_team|
 	# Pulls one players name and position at the same time
 	while i < players.count do
 		# Inserts player data into their team
-		team.players << Player.create(name: players[i].children().inner_text, position: positions[i].children().inner_text, bio: lorem)
+		team.players << Player.create(name: players[i].children().inner_text, position: positions[i].children().inner_text, age: 25, bio: lorem)
 		i += 1
 	end
 end

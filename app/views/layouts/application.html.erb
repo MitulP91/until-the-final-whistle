@@ -2,18 +2,19 @@
 <html>
 <head>
   <title>Until The Final Whistle</title>
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<!-- Creates skeleton container -->
 	<div class="container">
 		<h1 id="title"> Until The Final Whistle </h1>
 	
 		<div class="row"></div>
 
 		<!-- Possibly replace with partial later -->
-
 		<ul id="menu">
 			<li><%= link_to "Home", root_path %></li>
 			<li><%= link_to "Leagues", leagues_path %></li>
@@ -27,6 +28,7 @@
 			</li>
 
 			<% if user_signed_in? %>
+				<li><%= link_to "Favorites", favorites_path %></li>
 				<li>
 					<%= link_to "sign out", destroy_user_session_path, method: :delete %>
 				</li>
@@ -35,24 +37,30 @@
 				<li><%= link_to "sign in", new_user_session_path %></li>
 			<% end %>
 		</ul>
-
 		<!-- End possible partial -->
 	
 		<div class="row"></div>
-
+		
+		<!-- Devise notifications -->
 		<% if notice || alert %>
 			<p class="notice"><%= notice %></p>
 		<% end %>
+		<!-- End devise notifications -->
 
 		<div class="row"></div>
 		
+		<!-- Yield for other templates -->
 		<%= yield %>
+		<!-- End yield -->
 
 		<div class="row"></div>
 		
+		<!-- Footer -->
 		<footer>
 
 		</footer>
+		<!-- End footer -->
 	</div>
+	<!-- End skeleton container -->
 </body>
 </html>
