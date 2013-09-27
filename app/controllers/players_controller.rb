@@ -20,7 +20,7 @@ class PlayersController < ApplicationController
 	def show
 		@player = Player.find(params[:id])
 		# encoding: utf-8
-		doc = Nokogiri::HTML(open("http://www.bing.com/images/search?q=#{@player.name.gsub(/\s/, '+')}+#{@player.team.name.gsub(/\s/, '+')}"))
+		doc = Nokogiri::HTML(open(URI.parse(URI.encode("http://www.bing.com/images/search?q=#{@player.name.gsub(/\s/, '+')}+#{@player.team.name.gsub(/\s/, '+')}"))))
 		@pic = doc.css('.imgres:first-child a img')[0].attributes['src2'].value
 	end
 
