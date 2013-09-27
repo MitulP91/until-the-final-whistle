@@ -1,10 +1,13 @@
 <!-- Displays basic team information and crest/logo -->
 <div class="ten columns offset-by-three">
+	<!-- Team Logo -->
 	<%= image_tag("#{@team.name.downcase.gsub(/\s/, '-')}.png", :class => "five columns bg") %>
 
 	<div class="middle">
 		<h2 class="team-title"> <%= @team.name %> </h2>
 		<h4 class="team-title"> Current Table Position: <%= @team.current_place %> </h4>
+
+		<!-- Only displays button when user is signed in, and the team as not yet been favorited -->
 		<% if user_signed_in? && !current_user.teams.map { |fav| fav.id }.include?(@team.id) %>
 			<%= button_to "Add to Favorites", new_favorites_path(@team) %>
 		<% end %>
@@ -18,6 +21,7 @@
 <div class="columns three teams">
 	<h2 class="home-title">Players</h2>
 	<ul>
+		<!-- Outputs team roster -->
 		<% @team.players.each do |player| %>
 			<li class="player-name"><%= link_to "#{player.name}", team_player_path(@team.id, player) %></li>
 		<% end %>

@@ -37,4 +37,3 @@ data.each do |some_team|
 		i += 1
 	end
 end
-
